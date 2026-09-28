@@ -1,0 +1,429 @@
+@import "tailwindcss";
+@source not "../little-visionaries";
+
+/* Wireframe palette: dark neutral greys only. Final colour comes in the visual design phase. */
+@theme {
+  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+
+  --color-canvas: #111111;
+  --color-canvas-elevated: #1a1a1a;
+  --color-placeholder: #222222;
+  --color-ink: #f2f2ef;
+  --color-ink-muted: #9a9a95;
+  --color-line: #2e2e2c;
+  /* Brand orange from the CB mark. Highlights only: selection, focus, hover and active states. */
+  --color-accent: #f6581a;
+  --color-focus: #f6581a;
+
+  --site-max-width: 1600px;
+  --site-gutter: clamp(1.25rem, 4vw, 3rem);
+  --header-height: 4.5rem;
+
+  /* Shared corner radius for media, cards and the nav bar. */
+  --radius-media: 0.625rem;
+
+  --space-section: clamp(4rem, 8vw, 7rem);
+  --space-block: clamp(2rem, 5vw, 4.5rem);
+  --space-stack: clamp(0.75rem, 1.4vw, 1.125rem);
+  --grid-gap: clamp(1rem, 2vw, 1.5rem);
+
+  --text-display: clamp(3.25rem, 9vw, 9rem);
+  --text-hero: clamp(2.5rem, 5.6vw, 6.25rem);
+  --text-heading: clamp(2.25rem, 5vw, 4.5rem);
+  --text-section: clamp(1.375rem, 2.2vw, 2rem);
+  --text-lead: clamp(1.25rem, 1.9vw, 1.75rem);
+  --text-body: clamp(1rem, 1.05vw, 1.0625rem);
+  --text-meta: 0.75rem;
+  --text-nav: 0.875rem;
+
+  --leading-display: 0.92;
+  --leading-heading: 1;
+  --leading-body: 1.6;
+
+  --tracking-display: -0.045em;
+  --tracking-heading: -0.03em;
+  --tracking-meta: 0.12em;
+
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-height) + 1rem);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    min-height: 100vh;
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-canvas);
+  }
+
+  /* Keep videos as silent loops — never show native pause/volume chrome, including iOS hover. */
+  video {
+    pointer-events: none;
+  }
+
+  video::-webkit-media-controls,
+  video::-webkit-media-controls-enclosure,
+  video::-webkit-media-controls-panel,
+  video::-webkit-media-controls-start-playback-button,
+  video::-webkit-media-controls-overlay-play-button {
+    display: none !important;
+    appearance: none;
+  }
+}
+
+@layer components {
+  .site-container {
+    width: min(100%, var(--site-max-width));
+    margin-inline: auto;
+    padding-inline: var(--site-gutter);
+  }
+
+  /* Desktop wireframe scaled to the media frame below lg, so the full layout is visible on mobile. */
+  @media (max-width: 1023px) {
+    .hyperliquid-wireframe-scale {
+      width: 1100px;
+      zoom: calc(100cqw / 1100px);
+    }
+  }
+
+  /* Sections only pad the top; <main> supplies the final bottom space, so gaps never double up. */
+  .site-section {
+    padding-block-start: var(--space-section);
+  }
+
+  .type-display {
+    font-size: var(--text-display);
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
+    font-weight: 500;
+  }
+
+  .type-hero {
+    font-size: var(--text-hero);
+    line-height: 1;
+    letter-spacing: var(--tracking-display);
+    font-weight: 500;
+  }
+
+  .type-heading {
+    font-size: var(--text-heading);
+    line-height: var(--leading-heading);
+    letter-spacing: var(--tracking-heading);
+    font-weight: 500;
+  }
+
+  .type-section {
+    font-size: var(--text-section);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+  }
+
+  .type-lead {
+    font-size: var(--text-lead);
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+  }
+
+  .type-body {
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+  }
+
+  .type-meta {
+    font-size: var(--text-meta);
+    line-height: 1.4;
+    letter-spacing: var(--tracking-meta);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .type-nav {
+    font-size: var(--text-nav);
+    line-height: 1;
+    font-weight: 500;
+  }
+
+  .link-hover {
+    transition: color 0.3s var(--ease-soft);
+  }
+
+  .link-hover:hover,
+  .link-hover[aria-current="page"] {
+    color: var(--color-accent);
+  }
+
+  .btn {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-inline: 1.5rem;
+    border-radius: var(--radius-media);
+    font-size: var(--text-nav);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background: var(--color-ink);
+    color: var(--color-canvas);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent);
+  }
+
+  .btn-secondary {
+    border: 1px solid var(--color-ink);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    transition:
+      background-color 0.3s var(--ease-soft),
+      border-color 0.3s var(--ease-soft),
+      color 0.3s var(--ease-soft);
+  }
+
+  .btn-sm {
+    min-height: 2.5rem;
+    padding-inline: 1.125rem;
+  }
+
+  .field {
+    width: 100%;
+    min-height: 3.25rem;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-media);
+    background: var(--color-canvas-elevated);
+    color: var(--color-ink);
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  .field:focus {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 0;
+    border-color: var(--color-accent);
+  }
+
+  /* Home hero: pattern fades up, then the wordmark resolves out of a blur. */
+  .hero-video {
+    animation: hero-fade-in 1.2s ease-out both;
+  }
+
+  .hero-name {
+    animation: hero-name-in 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  }
+
+  .hero-reveal {
+    animation: hero-reveal 1.1s cubic-bezier(0.65, 0, 0.35, 1) 1.5s both;
+  }
+
+  .hero-trail-item {
+    animation: hero-trail 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .marquee-track {
+    animation: marquee 40s linear infinite;
+  }
+
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-video,
+    .hero-name,
+    .hero-reveal,
+    .marquee-track {
+      animation: none;
+    }
+  }
+
+  /*
+   * Scroll reveals. Hidden states only apply once html.motion is set (inline script in the root layout),
+   * so content stays visible without JavaScript or with reduced motion. RevealObserver sets data-revealed.
+   */
+  .reveal-word {
+    display: inline-block;
+    overflow: clip;
+    vertical-align: top;
+    /* Room for descenders inside the mask without changing line height. */
+    padding-block: 0.06em 0.14em;
+    margin-block: -0.06em -0.14em;
+  }
+
+  .reveal-word > span {
+    display: inline-block;
+  }
+
+  .media-zoom {
+    transition: scale 1.4s var(--ease-premium);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    :root {
+      --reveal-distance: 1rem;
+      --reveal-zoom: 1.04;
+      --word-step: 30ms;
+    }
+
+    @media (min-width: 768px) {
+      :root {
+        --reveal-distance: 1.75rem;
+        --reveal-zoom: 1.08;
+        --word-step: 40ms;
+      }
+    }
+
+    .motion [data-reveal] {
+      transition:
+        opacity 0.8s var(--ease-soft),
+        translate 1s var(--ease-premium),
+        color 0.3s var(--ease-soft);
+      transition-delay: var(--reveal-delay, 0ms), var(--reveal-delay, 0ms), 0ms;
+    }
+
+    .motion [data-reveal]:not([data-revealed]) {
+      opacity: 0;
+      translate: 0 var(--reveal-distance);
+    }
+
+    /* Large type: each word rises out of its own line mask instead of the whole block fading. */
+    .motion [data-reveal="text"]:not([data-revealed]) {
+      opacity: 1;
+      translate: none;
+    }
+
+    .motion [data-reveal="text"] .reveal-word > span {
+      transition: translate 0.9s var(--ease-premium);
+      transition-delay: calc(var(--reveal-delay, 0ms) + min(var(--word), 10) * var(--word-step));
+    }
+
+    .motion [data-reveal="text"]:not([data-revealed]) .reveal-word > span {
+      translate: 0 110%;
+    }
+
+    /* Imagery settles from a slight zoom as its frame fades up. */
+    .motion [data-reveal="media"]:not([data-revealed]) .media-zoom {
+      scale: var(--reveal-zoom);
+    }
+
+    @media (hover: hover) {
+      .group:hover .media-zoom {
+        scale: 1.03;
+        transition-duration: 0.9s;
+      }
+    }
+
+    /* Gentle depth on larger screens: the image drifts slightly slower than the page. */
+    @supports (animation-timeline: view()) {
+      @media (min-width: 768px) {
+        .media-drift {
+          animation: media-drift linear both;
+          animation-timeline: view();
+          animation-range: cover;
+        }
+      }
+    }
+  }
+}
+
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-name-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+    filter: blur(18px);
+  }
+}
+
+@keyframes hero-reveal {
+  from {
+    grid-template-rows: 0fr;
+  }
+  to {
+    grid-template-rows: 1fr;
+  }
+}
+
+@keyframes hero-trail {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+}
+
+@keyframes media-drift {
+  from {
+    transform: translateY(-2.5%) scale(1.06);
+  }
+  to {
+    transform: translateY(2.5%) scale(1.06);
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}

@@ -1,0 +1,43 @@
+export const SITE = {
+  name: "Connor Beck",
+  shortName: "CB",
+  role: "Creative Designer",
+  location: "London, UK",
+  timezone: "GMT / BST",
+  url: "https://connorbeck.com",
+  email: "hello@connorbeck.co.uk",
+  responseTime: "I usually reply within two working days.",
+  description:
+    "Connor Beck is a London-based Creative Designer working across motion, brand identity, product and UI/UX design.",
+  logo: { src: "/brand/cb-logo-white.png", width: 512, height: 364 },
+  nav: [
+    { href: "/", label: "Home" },
+    { href: "/work", label: "Projects" },
+    { href: "/services", label: "Services" },
+    { href: "/contact", label: "Contact" },
+  ],
+  contact: { href: "/contact", label: "Get in touch" },
+  social: [
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/connorbeck96/" },
+    { label: "Pinterest", href: "#" },
+  ],
+  clients: [
+    { name: "Premier League", logo: "/clients/premier-league.png", width: 440, height: 186 },
+    { name: "Indeed Flex", logo: "/clients/indeed-flex.png", width: 511, height: 94 },
+    { name: "Envision Racing", logo: "/clients/envision-racing.png", width: 512, height: 206 },
+    { name: "Off-White", logo: "/clients/off-white.png", width: 476, height: 88 },
+    { name: "Entain", logo: "/clients/entain.png", width: 394, height: 112 },
+    { name: "Ladbrokes", logo: "/clients/ladbrokes.png", width: 470, height: 88 },
+    { name: "Coral", logo: "/clients/coral.png", width: 472, height: 74 },
+  ],
+  tools: [
+    { name: "After Effects", use: "Motion Design", icon: "/tools/after-effects.png" },
+    { name: "Photoshop", use: "Digital Design", icon: "/tools/photoshop.png" },
+    { name: "Figma", use: "Product Design", icon: "/tools/figma.svg" },
+    { name: "Framer", use: "Web Design", icon: "/tools/framer.svg" },
+    { name: "Illustrator", use: "Brand Identity", icon: "/tools/illustrator.png" },
+    { name: "InDesign", use: "Print Design", icon: "/tools/indesign.png" },
+    { name: "Adobe Firefly", use: "AI Creation", icon: "/tools/firefly.png" },
+    { name: "Claude AI", use: "Art Direction", icon: "/tools/claude.png" },
+  ],
+} as const;

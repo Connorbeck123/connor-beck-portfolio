@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+.tools
+.cursor
+.DS_Store
+*.log
+.env
+.env*.local
+.vercel
+next-env.d.ts
+tsconfig.tsbuildinfo
+
+# GitHub blocks files over 100MB. Re-add with Git LFS if you want this clip in the repo.
+public/work/pl-socials/mr-4.mp4
