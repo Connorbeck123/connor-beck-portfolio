@@ -36,6 +36,10 @@ export function isDiscipline(value: unknown): value is DisciplineSlug {
   return SERVICES.some((service) => service.slug === value);
 }
 
+const PROJECT_ONLY_LABELS: Partial<Record<DisciplineSlug, string>> = {
+  "creative-direction": "Creative Direction",
+};
+
 export function disciplineLabel(slug: DisciplineSlug): string {
-  return SERVICES.find((service) => service.slug === slug)?.title ?? slug;
+  return SERVICES.find((service) => service.slug === slug)?.title ?? PROJECT_ONLY_LABELS[slug] ?? slug;
 }

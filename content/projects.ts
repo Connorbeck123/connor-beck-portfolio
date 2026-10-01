@@ -165,7 +165,7 @@ export const PROJECTS: Project[] = [
     title: "The Kick Off",
     summary: "Building anticipation for the return of the Premier League.",
     client: "Premier League",
-    disciplines: ["motion"],
+    disciplines: ["motion", "creative-direction"],
     role: "Motion Designer",
     deliverables: ["Season launch promo", "Edit", "Motion graphics"],
     format: "short",

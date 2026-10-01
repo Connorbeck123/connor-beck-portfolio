@@ -1,4 +1,5 @@
-export type DisciplineSlug = "motion" | "branding" | "product" | "ui-ux";
+/** The first four are services; the rest are project-only tags with no service page. */
+export type DisciplineSlug = "motion" | "branding" | "product" | "ui-ux" | "creative-direction";
 
 export type MediaType = "image" | "video";
 
