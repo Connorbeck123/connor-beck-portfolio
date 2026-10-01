@@ -4,7 +4,7 @@ export const SITE = {
   role: "Creative Designer",
   location: "London, UK",
   timezone: "GMT / BST",
-  url: "https://connorbeck.com",
+  url: "https://www.connorbeck.co.uk",
   email: "hello@connorbeck.co.uk",
   responseTime: "I usually reply within two working days.",
   description:
