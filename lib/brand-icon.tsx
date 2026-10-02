@@ -3,9 +3,9 @@ import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { SITE } from "@/content/site";
 
-/** The white logo is invisible on light browser chrome, so it sits on the brand accent. */
+/** Orange logo on the dark canvas, so the icon reads on both light and dark browser chrome. */
 export async function brandIcon(size: number, radius: number) {
-  const logo = await readFile(join(process.cwd(), "public", SITE.logo.src));
+  const logo = await readFile(join(process.cwd(), "public", "brand", "cb-logo-orange.png"));
   const logoWidth = Math.round(size * 0.7);
   const logoHeight = Math.round((logoWidth * SITE.logo.height) / SITE.logo.width);
 
@@ -18,7 +18,7 @@ export async function brandIcon(size: number, radius: number) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#f6581a",
+          background: "#111111",
           borderRadius: radius,
         }}
       >
