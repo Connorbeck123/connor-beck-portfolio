@@ -40,6 +40,8 @@ function InField({
 
 export function ContactForm() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [filled, setFilled] = useState({
     name: false,
     email: false,
@@ -57,9 +59,6 @@ export function ContactForm() {
       <div role="status" className="rounded-media border border-line p-8 md:p-10">
         <p className="type-section">Thanks — your message is on its way.</p>
         <p className="mt-4 text-ink-muted">{SITE.responseTime}</p>
-        <p className="mt-6 text-sm text-ink-muted">
-          Prototype: this form isn’t connected yet. Nothing was sent.
-        </p>
         <button type="button" onClick={() => setSent(false)} className="btn btn-secondary mt-8">
           Send another message
         </button>
@@ -70,11 +69,57 @@ export function ContactForm() {
   return (
     <form
       className="flex flex-col gap-6"
-      onSubmit={(event) => {
+      onSubmit={async (event) => {
         event.preventDefault();
-        setSent(true);
+        setError(null);
+        setSending(true);
+
+        const form = event.currentTarget;
+        const data = new FormData(form);
+        if (String(data.get("company") ?? "").trim()) {
+          setSending(false);
+          setSent(true);
+          return;
+        }
+
+        const services = data.getAll("services").join(", ");
+
+        try {
+          const response = await fetch(`https://formsubmit.co/ajax/${SITE.email}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify({
+              name: data.get("name"),
+              email: data.get("email"),
+              services: services || "Not specified",
+              budget: data.get("budget") || "Not specified",
+              timeline: data.get("timeline") || "Not specified",
+              message: data.get("message"),
+              _subject: `New enquiry from ${data.get("name")}`,
+              _replyto: data.get("email"),
+              _template: "table",
+              _captcha: "false",
+            }),
+          });
+          const result = (await response.json()) as { success?: string | boolean; message?: string };
+          if (!response.ok || result.success === "false" || result.success === false) {
+            throw new Error(result.message || "Send failed");
+          }
+          form.reset();
+          setFilled({ name: false, email: false, budget: false, timeline: false, message: false });
+          setSent(true);
+        } catch {
+          setError("The message didn’t send. Try again, or email me directly.");
+        } finally {
+          setSending(false);
+        }
       }}
     >
+      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+        <label htmlFor="company">Company</label>
+        <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
       <div className="grid gap-4 sm:grid-cols-2">
         <InField label="Name" htmlFor="name" filled={filled.name}>
           <input id="name" name="name" autoComplete="name" required className="field" onChange={mark("name")} />
@@ -100,7 +145,7 @@ export function ContactForm() {
               key={service.slug}
               className="flex min-h-11 cursor-pointer items-center gap-2 rounded-media border border-line px-4 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent has-[:checked]:text-canvas has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-accent"
             >
-              <input type="checkbox" name="services" value={service.slug} className="sr-only" />
+              <input type="checkbox" name="services" value={service.title} className="sr-only" />
               {service.title}
             </label>
           ))}
@@ -152,9 +197,18 @@ export function ContactForm() {
         />
       </InField>
 
+      {error ? (
+        <p role="alert" className="text-sm text-ink-muted">
+          {error}{" "}
+          <a href={`mailto:${SITE.email}`} className="text-ink underline-offset-4 hover:text-accent">
+            {SITE.email}
+          </a>
+        </p>
+      ) : null}
+
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <button type="submit" className="btn btn-primary self-start">
-          Send message
+        <button type="submit" className="btn btn-primary self-start" disabled={sending}>
+          {sending ? "Sending…" : "Send message"}
         </button>
         <p className="text-sm text-ink-muted">{SITE.responseTime}</p>
       </div>

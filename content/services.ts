@@ -85,7 +85,7 @@ export const SERVICES: Service[] = [
     ],
     showcase: [
       work("hyperliquid", "00-cover-4x3.mp4", "Hyperliquid — product film"),
-      serviceMedia("interviews-16x9.mp4", "Alma AI — interviews"),
+      work("alma", "08.mp4", "Alma AI — interviews"),
     ],
   },
   {
