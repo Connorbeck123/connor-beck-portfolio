@@ -1,4 +1,5 @@
 import { cn } from "@/lib/cn";
+import { ScaleToFit } from "./ScaleToFit";
 import { hyperliquidInter } from "./shared";
 
 const NAV = [
@@ -52,8 +53,9 @@ function Spark() {
 
 export function HyperliquidWireframe() {
   return (
-    <div className="@container overflow-hidden bg-[#111111] text-[#c8c8c4] [container-type:inline-size]">
-      <div className={cn(hyperliquidInter.className, "hyperliquid-wireframe-scale")}>
+    <div className="overflow-hidden bg-[#111111] text-[#c8c8c4]">
+      <ScaleToFit width={1100} below="(max-width: 1023px)">
+      <div className={hyperliquidInter.className}>
         <div className="grid w-full min-w-0 grid-cols-[13rem_minmax(0,1fr)_16.5rem] grid-rows-[auto_auto_1fr] max-lg:w-[1100px]">
         <aside className="row-span-3 flex flex-col border-r border-[#2e2e2c] px-3 py-4">
           <div className="flex items-center gap-2 px-2">
@@ -309,6 +311,7 @@ export function HyperliquidWireframe() {
         </div>
         </div>
       </div>
+      </ScaleToFit>
     </div>
   );
 }

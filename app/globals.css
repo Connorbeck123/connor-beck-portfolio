@@ -111,14 +111,6 @@
     padding-inline: var(--site-gutter);
   }
 
-  /* Desktop wireframe scaled to the media frame below lg, so the full layout is visible on mobile. */
-  @media (max-width: 1023px) {
-    .hyperliquid-wireframe-scale {
-      width: 1100px;
-      zoom: calc(100cqw / 1100px);
-    }
-  }
-
   /* Sections only pad the top; <main> supplies the final bottom space, so gaps never double up. */
   .site-section {
     padding-block-start: var(--space-section);

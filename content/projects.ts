@@ -221,6 +221,7 @@ export const PROJECTS: Project[] = [
           socials("em-8.mp4", "Elevated Moments — Elanga", "9/17"),
           socials("em-9.mp4", "Elevated Moments — Bruno", "9/17"),
           socials("em-10.mp4", "Elevated Moments — Nico", "9/17"),
+          socials("em-11.mp4", "Elevated Moments — United v City", "9/17"),
         ],
       },
       { type: "media", media: socials("em-6.mp4", "Elevated Moments — landscape cut") },
