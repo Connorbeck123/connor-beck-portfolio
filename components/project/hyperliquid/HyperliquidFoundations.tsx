@@ -10,9 +10,9 @@ const TONES = [
   { name: "Canvas", hex: "#000D0D", span: "col-span-12 md:col-span-5", height: "min-h-[10.5rem] md:min-h-[13.5rem]" },
   { name: "Surface", hex: "#0F2323", span: "col-span-12 sm:col-span-8", height: "min-h-[8.5rem] md:min-h-[10.5rem]" },
   { name: "White", hex: "#FFFFFF", span: "col-span-12 sm:col-span-4", height: "min-h-[8.5rem] md:min-h-[10.5rem]" },
-  { name: "Mint", hex: "#97FCE4", span: "col-span-4", height: "min-h-[7.25rem] md:min-h-[8.5rem]" },
-  { name: "Gain", hex: "#01D66C", span: "col-span-4", height: "min-h-[7.25rem] md:min-h-[8.5rem]" },
-  { name: "Loss", hex: "#FF0000", span: "col-span-4", height: "min-h-[7.25rem] md:min-h-[8.5rem]" },
+  { name: "Mint", hex: "#97FCE4", span: "col-span-12 sm:col-span-4", height: "min-h-[7.25rem] md:min-h-[8.5rem]" },
+  { name: "Gain", hex: "#01D66C", span: "col-span-6 sm:col-span-4", height: "min-h-[7.25rem] md:min-h-[8.5rem]" },
+  { name: "Loss", hex: "#FF0000", span: "col-span-6 sm:col-span-4", height: "min-h-[7.25rem] md:min-h-[8.5rem]" },
 ] as const;
 
 const ICONS = [

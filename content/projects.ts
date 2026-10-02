@@ -176,13 +176,13 @@ export const PROJECTS: Project[] = [
     blocks: [
       {
         type: "compare",
-        before: tko("02-ungraded.mp4", "Ungraded", "1520/779"),
-        after: tko("02.mp4", "Graded", "1520/779"),
+        before: tko("02-ungraded.mp4", "Ungraded", "1920/1336"),
+        after: tko("02.mp4", "Graded", "1920/1336"),
       },
       {
         type: "media-grid",
         columns: 2,
-        items: [tko("03", "The Kick Off — sticker artwork", "1/1"), tko("04", "The Kick Off — artwork 02", "1/1")],
+        items: [tko("03", "The Kick Off — sticker artwork", "1/1"), tko("04.jpg", "The Kick Off — artwork 02", "1/1")],
       },
       { type: "media", media: tko("05.mp4", "The Kick Off — sequence 01") },
       { type: "media", media: tko("06.mp4", "The Kick Off — sequence 02") },
