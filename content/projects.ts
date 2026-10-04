@@ -320,7 +320,7 @@ export const PROJECTS: Project[] = [
           socials("mr-1.mp4", "Matchweek Roundup — goal", "9/17"),
           socials("mr-2.mp4", "Matchweek Roundup — Tyne-Wear", "9/17"),
           socials("mr-3.mp4", "Matchweek Roundup — Matchweek 24", "9/17"),
-          socials("mr-4.mp4", "Matchweek Roundup — Matchweek 23", "9/17"),
+          socials("mr-4.mp4", "Matchweek Roundup — Matchweek 35", "9/17"),
         ],
       },
     ],

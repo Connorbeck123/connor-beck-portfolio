@@ -1,6 +1,7 @@
 "use client";
 
 import { forwardRef, useEffect, useRef, useState } from "react";
+import { versioned } from "@/lib/media";
 
 type LazyVideoProps = {
   src: string;
@@ -9,6 +10,9 @@ type LazyVideoProps = {
   className?: string;
   onTimeUpdate?: (video: HTMLVideoElement) => void;
 };
+
+/** Every video in /public has a first-frame still next to it, e.g. 02.mp4 → 02.poster.jpg. */
+export const posterFor = (src: string) => src.replace(/\.mp4$/, ".poster.jpg");
 
 /** Muted looping video that only downloads once it nears the viewport, and pauses while off screen. */
 export const LazyVideo = forwardRef<HTMLVideoElement, LazyVideoProps>(function LazyVideo(
@@ -49,8 +53,8 @@ export const LazyVideo = forwardRef<HTMLVideoElement, LazyVideoProps>(function L
         if (typeof forwardedRef === "function") forwardedRef(node);
         else if (forwardedRef) forwardedRef.current = node;
       }}
-      src={active ? src : undefined}
-      poster={poster}
+      src={active ? versioned(src) : undefined}
+      poster={versioned(poster ?? posterFor(src))}
       aria-label={label}
       muted
       loop

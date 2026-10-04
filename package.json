@@ -7,7 +7,9 @@
     "node": ">=20"
   },
   "scripts": {
+    "predev": "node scripts/media-versions.mjs",
     "dev": "next dev --turbopack",
+    "prebuild": "node scripts/media-versions.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint ."

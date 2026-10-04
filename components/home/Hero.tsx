@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { SITE } from "@/content/site";
+import { versioned } from "@/lib/media";
 
 const REVEAL_IMAGES = [
   { src: "/hero/pl-bloom.png", width: 623, height: 351 },
@@ -95,7 +96,8 @@ export function Hero() {
     >
       <video
         ref={videoRef}
-        src="/hero/cb-pattern.mp4"
+        src={versioned("/hero/cb-pattern.mp4")}
+        poster={versioned("/hero/cb-pattern.poster.jpg")}
         autoPlay
         muted
         loop
