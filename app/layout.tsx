@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SiteShell } from "@/components/layout/SiteShell";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SITE } from "@/content/site";
@@ -54,6 +55,7 @@ export default function RootLayout({
         </a>
         <SiteShell>{children}</SiteShell>
         <JsonLd data={siteSchema()} />
+        <SpeedInsights />
       </body>
     </html>
   );
