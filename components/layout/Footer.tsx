@@ -6,15 +6,15 @@ export function Footer() {
   return (
     <footer className="mt-auto border-t border-line">
       <Container className="pt-12 pb-8 md:pt-16">
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-12">
-          <div className="col-span-2 md:col-span-4">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-12 md:gap-x-10">
+          <div className="col-span-2 md:col-span-3">
             <Link href="/" className="font-medium">
               {SITE.name}
             </Link>
             <p className="mt-2 max-w-xs text-ink-muted">{SITE.role}</p>
           </div>
 
-          <div className="col-span-2 md:col-span-4">
+          <div className="col-span-2 md:col-span-5">
             <p className="type-meta text-ink-muted">Email</p>
             <a href={`mailto:${SITE.email}`} className="link-hover mt-3 inline-block break-all">
               {SITE.email}

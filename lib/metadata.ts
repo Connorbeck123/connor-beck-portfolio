@@ -2,26 +2,35 @@ import type { Metadata } from "next";
 import { SITE } from "@/content/site";
 
 type PageMetaInput = {
+  /** Used as `<title>` with the site name appended, unless `absoluteTitle` is set. */
   title: string;
+  absoluteTitle?: string;
   description: string;
   path?: string;
-  image?: string;
+  /** Defaults to the site-wide share card. */
+  image?: { url: string; alt: string };
+  noIndex?: boolean;
 };
+
+const DEFAULT_IMAGE = { url: "/opengraph-image", alt: `${SITE.name} — Multidisciplinary Designer, London` };
 
 export function createPageMetadata({
   title,
+  absoluteTitle,
   description,
   path = "/",
-  image,
+  image = DEFAULT_IMAGE,
+  noIndex,
 }: PageMetaInput): Metadata {
   const url = new URL(path, SITE.url).toString();
-  const isRoot = path === "/";
-  const fullTitle = isRoot ? `${SITE.name} — ${SITE.role}` : `${title} — ${SITE.name}`;
+  const fullTitle = absoluteTitle ?? `${title} — ${SITE.name}`;
+  const ogImage = { url: image.url, alt: image.alt, width: 1200, height: 630 };
 
   return {
-    title: isRoot ? { absolute: fullTitle } : title,
+    title: { absolute: fullTitle },
     description,
     alternates: { canonical: url },
+    ...(noIndex ? { robots: { index: false, follow: true } } : {}),
     openGraph: {
       title: fullTitle,
       description,
@@ -29,13 +38,13 @@ export function createPageMetadata({
       siteName: SITE.name,
       locale: "en_GB",
       type: "website",
-      ...(image ? { images: [{ url: image, alt: title }] } : {}),
+      images: [ogImage],
     },
     twitter: {
-      card: image ? "summary_large_image" : "summary",
+      card: "summary_large_image",
       title: fullTitle,
       description,
-      ...(image ? { images: [image] } : {}),
+      images: [ogImage],
     },
   };
 }

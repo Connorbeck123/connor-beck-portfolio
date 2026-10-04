@@ -13,10 +13,10 @@ export function ContactCTA({
   return (
     <Container as="section" aria-label="Contact" className="site-section">
       <div className="grid gap-10 border-t border-line pt-6 md:grid-cols-12">
-        <p data-reveal className="type-meta text-ink-muted md:col-span-4">
+        <p data-reveal className="type-meta text-ink-muted md:col-span-3">
           Contact
         </p>
-        <div className="md:col-span-8">
+        <div className="md:col-span-9">
           <h2 data-reveal="text" className="type-heading max-w-3xl">
             <RevealText>{heading}</RevealText>
           </h2>

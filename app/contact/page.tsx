@@ -8,7 +8,8 @@ import { createPageMetadata } from "@/lib/metadata";
 
 export const metadata = createPageMetadata({
   title: "Contact",
-  description: `Get in touch with ${SITE.name} about freelance projects or full-time roles.`,
+  absoluteTitle: `Contact — Hire a Multidisciplinary Designer in London | ${SITE.name}`,
+  description: `Get in touch with ${SITE.name}, a London-based multidisciplinary designer, about freelance motion, brand, product or UI/UX projects and full-time roles.`,
   path: "/contact",
 });
 

@@ -9,6 +9,31 @@ export const SITE = {
   responseTime: "I usually reply within two working days.",
   description:
     "Connor Beck is a London-based Creative Designer working across motion, brand identity, product and UI/UX design.",
+  /** Search and social positioning only. Nothing here is rendered visibly on the page. */
+  seo: {
+    title: "Connor Beck — Multidisciplinary Designer in London | Motion, Brand, Product & UI/UX",
+    description:
+      "Connor Beck is a London-based multidisciplinary designer working across motion, brand identity, product and UI/UX design, with experience in sport, entertainment, fintech and digital for clients including the Premier League, Indeed and Entain.",
+    jobTitles: [
+      "Multidisciplinary Designer",
+      "Motion Designer",
+      "Brand Identity Designer",
+      "Product Designer",
+      "UI/UX Designer",
+    ],
+    knowsAbout: [
+      "Motion Design",
+      "Brand Identity",
+      "Visual Identity",
+      "Product Design",
+      "UI/UX Design",
+      "Art Direction",
+      "Creative Direction",
+      "Social Media Design",
+    ],
+    sectors: ["Sport", "Entertainment", "Fintech", "Digital"],
+    notableClients: ["Premier League", "Indeed", "Entain", "Ladbrokes", "Coral", "Envision Racing", "Off-White"],
+  },
   logo: { src: "/brand/cb-logo-white.png", width: 512, height: 364 },
   nav: [
     { href: "/", label: "Home" },

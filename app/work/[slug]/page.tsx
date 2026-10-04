@@ -9,8 +9,10 @@ import { ProjectDetails } from "@/components/project/ProjectDetails";
 import { HyperliquidFoundations } from "@/components/project/hyperliquid/HyperliquidFoundations";
 import { HyperliquidWireframe } from "@/components/project/hyperliquid/HyperliquidWireframe";
 import { ProjectFooter } from "@/components/project/ProjectFooter";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { createPageMetadata } from "@/lib/metadata";
 import { getNextProject, getProjectBySlug, getProjects } from "@/lib/projects";
+import { projectSchema } from "@/lib/schema";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -24,10 +26,14 @@ export async function generateMetadata({ params }: ProjectPageProps) {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
 
+  if (!project) return createPageMetadata({ title: "Project", description: "Project not found.", noIndex: true });
+
   return createPageMetadata({
-    title: project?.title ?? "Project",
-    description: project?.summary ?? "Project not found.",
+    title: project.title,
+    absoluteTitle: project.seo.title,
+    description: project.seo.description,
     path: `/work/${slug}`,
+    image: { url: `/work/${slug}/opengraph-image`, alt: `${project.title} — ${project.client}` },
   });
 }
 
@@ -57,6 +63,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <article>
+      <JsonLd data={projectSchema(project)} />
       <Container as="header" className="pt-8 md:pt-12">
         <nav aria-label="Breadcrumb" data-reveal className="text-sm text-ink-muted">
           <Link href="/work" className="link-hover">

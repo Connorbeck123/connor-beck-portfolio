@@ -41,27 +41,38 @@ export const PROJECTS: Project[] = [
     role: "Motion Designer",
     deliverables: ["Visual Direction", "Motion System", "Large-Format Screens", "Event Content"],
     format: "full",
-    cover: bloom("00-cover-21x9.mp4", "PL Bloom — hero film", "21/9"),
-    hero: bloom("01-hero.mp4", "PL Bloom — hero film"),
+    seo: {
+      title: "PL Bloom — Motion Design & Creative Direction for the Premier League | Connor Beck",
+      description:
+        "Motion design and creative direction by Connor Beck for the Premier League Broadcaster Workshop: a nature-inspired visual system across large-format screens, installations and event content.",
+    },
+    cover: bloom("00-cover-21x9.mp4", "PL Bloom motion film for the Premier League Broadcaster Workshop", "21/9"),
+    hero: bloom("01-hero.mp4", "PL Bloom hero film for the Premier League Broadcaster Workshop"),
     brief:
       "For the Premier League Broadcaster Workshop, Bloom explored a visual direction inspired by the English countryside and the idea of the Premier League Lion emerging through nature.",
     approach:
       "The concept reimagined the Premier League brand through a more natural and considered visual language, using colour, texture and movement to create a strong sense of place. Organic forms and tactile details came together to create a visual system designed to move seamlessly between the physical and digital worlds.",
     blocks: [
-      { type: "media", media: bloom("02.mp4", "Bloom — motion sequence") },
+      { type: "media", media: bloom("02.mp4", "PL Bloom motion sequence of organic, nature-led Premier League visuals") },
       {
         type: "media-grid",
         columns: 2,
-        items: [bloom("03", "Bloom — style frame", "1/1"), bloom("04.mp4", "Bloom — square loop", "1/1")],
+        items: [
+          bloom("03", "PL Bloom style frame: the Premier League lion formed from hedges, daisies and hydrangeas", "1/1"),
+          bloom("04.mp4", "PL Bloom square motion loop with flowers and foliage", "1/1"),
+        ],
       },
-      { type: "media", media: bloom("05.mp4", "Bloom — lion emerging through nature") },
+      { type: "media", media: bloom("05.mp4", "PL Bloom animation of the Premier League lion emerging through nature") },
       {
         type: "media-grid",
         columns: 2,
-        items: [bloom("06.mp4", "Bloom — detail loop 01", "1/1"), bloom("07.mp4", "Bloom — detail loop 02", "1/1")],
+        items: [
+          bloom("06.mp4", "PL Bloom close-up motion loop of floral textures", "1/1"),
+          bloom("07.mp4", "PL Bloom close-up motion loop of foliage detail", "1/1"),
+        ],
       },
-      { type: "media", media: bloom("08", "Bloom — workshop environment") },
-      { type: "media", media: bloom("09.mp4", "Bloom — screens in situ") },
+      { type: "media", media: bloom("08", "PL Bloom visuals on large LED screens at the Premier League Broadcaster Workshop venue") },
+      { type: "media", media: bloom("09.mp4", "PL Bloom motion content playing on screens at the workshop") },
     ],
     outcome:
       "The final visual system brought the Bloom concept to life across the workshop environment, from large-format screens and physical installations to supporting event content. The combination of motion, colour and texture created a cohesive experience that connected the Premier League brand with its natural surroundings.",
@@ -76,27 +87,38 @@ export const PROJECTS: Project[] = [
     role: "Digital Designer",
     deliverables: ["Event Branding", "Motion Visuals", "Supporting Assets"],
     format: "full",
-    cover: alma("01-hero.mp4", "Alma — hero film"),
-    hero: alma("01-hero.mp4", "Alma — hero film"),
+    seo: {
+      title: "Alma AI — Motion & Event Branding for Indeed FutureWorks | Connor Beck",
+      description:
+        "Product, motion and brand design by Connor Beck bringing Indeed’s Alma AI platform to life at FutureWorks 2025, from stage visuals and screen content to event branding.",
+    },
+    cover: alma("01-hero.mp4", "Alma AI hero film for Indeed FutureWorks"),
+    hero: alma("01-hero.mp4", "Alma AI hero film introducing Indeed’s AI assistant"),
     brief:
       "FutureWorks is Indeed’s global event series exploring the future of work, hiring and technology. For their 2025 event, Alma’s AI-powered platform was brought to the forefront through a visual experience designed to make the technology feel engaging, contemporary and accessible.",
     approach:
       "The creative language combined event branding, motion-led visuals and supporting assets to translate the platform into a cohesive physical and digital experience.",
     blocks: [
-      { type: "media", media: alma("02.mp4", "Alma — brand animation", "15/8") },
+      { type: "media", media: alma("02.mp4", "Alma AI logo and brand animation", "15/8") },
       {
         type: "media-grid",
         columns: 2,
-        items: [alma("03", "Alma — event asset 01", "1/1"), alma("04", "Alma — event asset 02", "1/1")],
+        items: [
+          alma("03", "“Introducing Alma, your AI assistant” launch graphic on a deep blue background", "1/1"),
+          alma("04", "Indeed Flex shift scheduling interface with the Ask Alma assistant button", "1/1"),
+        ],
       },
-      { type: "media", media: alma("05.mp4", "Alma — stage visuals") },
+      { type: "media", media: alma("05.mp4", "Alma AI stage visuals for the FutureWorks event") },
       {
         type: "media-grid",
         columns: 2,
-        items: [alma("06", "Alma — event asset 03", "1/1"), alma("07.mp4", "Alma — motion loop", "1/1")],
+        items: [
+          alma("06", "Alma AI chat window asking “How can I help?” on a glowing blue circuit background", "1/1"),
+          alma("07.mp4", "Alma AI square motion loop", "1/1"),
+        ],
       },
-      { type: "media", media: alma("08.mp4", "Alma — screen content") },
-      { type: "media", media: alma("09.jpg", "Alma — event environment") },
+      { type: "media", media: alma("08.mp4", "Alma AI interview and screen content for FutureWorks") },
+      { type: "media", media: alma("09.jpg", "Indeed FutureWorks audience facing the stage with Alma AI branding on the screens") },
     ],
     outcome:
       "The visual system extended Alma beyond the product itself, creating a consistent presence throughout the event experience. Motion and branded content helped communicate the platform’s technology in a way that felt dynamic, approachable and connected to the wider FutureWorks environment.",
@@ -111,18 +133,23 @@ export const PROJECTS: Project[] = [
     role: "Digital Designer",
     deliverables: ["Brand Strategy", "Visual Identity", "Website Design"],
     format: "full",
-    cover: pitch("01-hero.mp4", "Pitch Level — hero film"),
-    hero: pitch("01-hero.mp4", "Pitch Level — hero film"),
+    seo: {
+      title: "Pitch Level — Brand Identity & Website Design | Connor Beck",
+      description:
+        "Brand strategy, visual identity and responsive website design by Connor Beck for Pitch Level, a UK events company delivering premium experiences at venues including Wembley.",
+    },
+    cover: pitch("01-hero.mp4", "Pitch Level brand identity film"),
+    hero: pitch("01-hero.mp4", "Pitch Level brand identity film"),
     brief:
       "Pitch Level is an events company delivering experiences across some of the UK’s most recognisable venues, including Wembley.",
     approach:
       "The brand identity was developed as a flexible system designed to work seamlessly across physical and digital touchpoints. A confident visual language combines bold typography, considered layouts and a distinctive graphic system to reflect the scale and energy of the experiences Pitch Level delivers.",
     blocks: [
-      { type: "media", media: pitch("02", "Pitch Level — identity") },
-      { type: "media", media: pitch("03", "Pitch Level — brand system overview", "1519/2824") },
-      { type: "media", media: pitch("04", "Pitch Level — brand in use", "1519/911") },
-      { type: "media", media: pitch("05", "Pitch Level — website pages", "1519/2229") },
-      { type: "media", media: pitch("06.mp4", "Pitch Level — website walkthrough") },
+      { type: "media", media: pitch("02", "Pitch Level logo: a gold linear P monogram shown stacked and horizontal on a construction grid") },
+      { type: "media", media: pitch("03", "Pitch Level website homepage design on desktop and mobile", "1519/2824") },
+      { type: "media", media: pitch("04", "Pitch Level brand icon set in gold line art with membership benefits", "1519/911") },
+      { type: "media", media: pitch("05", "Pitch Level Instagram posts and brand guidelines pages covering logo, colour, typography and photography", "1519/2229") },
+      { type: "media", media: pitch("06.mp4", "Pitch Level website walkthrough") },
     ],
     outcome:
       "The identity was extended into a fully responsive digital experience, creating a website that showcases Pitch Level’s events while giving the brand a clear and confident presence online. Brand strategy, visual identity, digital design and web development came together as one cohesive system, creating a consistent experience across every touchpoint.",
@@ -137,23 +164,31 @@ export const PROJECTS: Project[] = [
     role: "Product Designer",
     deliverables: ["UX Audit", "Information Architecture", "Interface Design", "Prototype"],
     format: "full",
-    cover: hyper("00-cover-4x3.mp4", "Hyperliquid — dashboard film", "4/3"),
-    hero: hyper("01-hero.mp4", "Hyperliquid — hero film"),
+    seo: {
+      title: "Hyperliquid — Crypto Trading Platform UI/UX & Product Design | Connor Beck",
+      description:
+        "Fintech UI/UX and product design by Connor Beck rethinking the Hyperliquid crypto trading dashboard through clearer information architecture, interface design and a design system.",
+    },
+    cover: hyper("00-cover-4x3.mp4", "Hyperliquid crypto trading dashboard film", "4/3"),
+    hero: hyper("01-hero.mp4", "Hyperliquid trading platform interface film"),
     brief:
       "A UI/UX design exploring how a complex trading platform can be made clearer and more intuitive through thoughtful product design and information hierarchy.",
     blocks: [
       {
         type: "media",
-        media: hyper("02", "Hyperliquid — live price cards"),
+        media: hyper("02", "Hyperliquid live price cards for Bitcoin and Ethereum with price charts"),
       },
       {
         type: "media-grid",
         columns: 2,
-        items: [hyper("03", "Hyperliquid — sidebar navigation", "1/1"), hyper("04", "Hyperliquid — exchange panel", "1/1")],
+        items: [
+          hyper("03", "Hyperliquid sidebar navigation with dashboard, portfolio, wallet and watchlist", "1/1"),
+          hyper("04", "Hyperliquid exchange panel for buying Bitcoin with USDT", "1/1"),
+        ],
       },
       {
         type: "media",
-        media: hyper("05", "Hyperliquid — full interface"),
+        media: hyper("05", "Hyperliquid trading dashboard with live crypto prices, market overview and exchange panel"),
       },
     ],
     outcome:
@@ -169,8 +204,13 @@ export const PROJECTS: Project[] = [
     role: "Motion / Print Designer",
     deliverables: ["Season Launch Promo", "Motion Graphics", "Print Graphics"],
     format: "short",
-    cover: tko("01-hero.mp4", "The Kick Off — promo"),
-    hero: tko("01-hero.mp4", "The Kick Off — full promo"),
+    seo: {
+      title: "The Kick Off — Premier League Season Launch Promo | Connor Beck",
+      description:
+        "Motion design, creative direction and print graphics by Connor Beck for The Kick Off, a high-energy promo building anticipation for the return of the Premier League season.",
+    },
+    cover: tko("01-hero.mp4", "The Kick Off Premier League season launch promo"),
+    hero: tko("01-hero.mp4", "The Kick Off full Premier League season launch promo"),
     brief:
       "A high-energy promo created to drum up excitement ahead of the new Premier League season, bringing together players, clubs and the moments that make the league so memorable.",
     blocks: [
@@ -182,12 +222,15 @@ export const PROJECTS: Project[] = [
       {
         type: "media-grid",
         columns: 2,
-        items: [tko("03", "The Kick Off — sticker artwork", "1/1"), tko("04.jpg", "The Kick Off — artwork 02", "1/1")],
+        items: [
+          tko("03", "Premier League sticker sheet with players, club crests and fan chants", "1/1"),
+          tko("04.jpg", "Premier League stickers and framed player portraits on a barbershop mirror", "1/1"),
+        ],
       },
-      { type: "media", media: tko("05.mp4", "The Kick Off — sequence 01") },
-      { type: "media", media: tko("06.mp4", "The Kick Off — sequence 02") },
-      { type: "media", media: tko("07", "The Kick Off — key frame") },
-      { type: "media", media: tko("08.mp4", "The Kick Off — sequence 03") },
+      { type: "media", media: tko("05.mp4", "The Kick Off motion sequence of Premier League players and clubs") },
+      { type: "media", media: tko("06.mp4", "The Kick Off motion sequence of memorable Premier League moments") },
+      { type: "media", media: tko("07", "Collage key frame of the Premier League trophy being lifted") },
+      { type: "media", media: tko("08.mp4", "The Kick Off closing motion sequence") },
     ],
     outcome:
       "Fast-paced editing, motion and graphic design unite to create an energetic visual piece that builds momentum towards kick-off and the return of Premier League football.",
@@ -202,8 +245,13 @@ export const PROJECTS: Project[] = [
     role: "Motion Designer",
     deliverables: ["Social Formats", "Branding Toolkit", "Motion Templates"],
     format: "short",
-    cover: socials("00-cover-21x9.mp4", "PL Socials — format montage", "21/9"),
-    hero: socials("01-hero.mp4", "PL Socials — format montage"),
+    seo: {
+      title: "PL Socials — Premier League Social Media Motion Design | Connor Beck",
+      description:
+        "Social formats, motion templates and a branding toolkit by Connor Beck for Premier League content, including Elevated Moments, Hall of Fame and Matchweek Roundup.",
+    },
+    cover: socials("00-cover-21x9.mp4", "Montage of Premier League social media formats", "21/9"),
+    hero: socials("01-hero.mp4", "Montage of Premier League social media formats"),
     brief:
       "A series of social formats and a bespoke branding toolkit for Premier League content, working across static and motion.",
     blocks: [
@@ -241,7 +289,10 @@ export const PROJECTS: Project[] = [
       {
         type: "media-grid",
         columns: 2,
-        items: [socials("sb-7", "Social Branding — toolkit", "1/1"), socials("sb-8.mp4", "Social Branding — toolkit in motion", "1/1")],
+        items: [
+          socials("sb-7", "Premier League full-time result graphic: Manchester United 3–1 Aston Villa", "1/1"),
+          socials("sb-8.mp4", "Premier League social branding toolkit in motion", "1/1"),
+        ],
       },
       {
         type: "chapter",
@@ -256,7 +307,10 @@ export const PROJECTS: Project[] = [
       {
         type: "media-grid",
         columns: 2,
-        items: [socials("hof-4", "Hall of Fame — artwork", "1/1"), socials("hof-5.mp4", "Hall of Fame — square cut", "1/1")],
+        items: [
+          socials("hof-4", "Hall of Fame interview frame with the caption “have fun on the pitch”", "1/1"),
+          socials("hof-5.mp4", "Premier League Hall of Fame square cut", "1/1"),
+        ],
       },
       {
         type: "chapter",

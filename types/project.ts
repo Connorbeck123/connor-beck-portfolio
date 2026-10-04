@@ -55,6 +55,8 @@ export type Project = {
   approach?: string;
   blocks: ContentBlock[];
   outcome?: string;
+  /** Search title and description. Not shown on the page. */
+  seo: { title: string; description: string };
 };
 
 export type Service = {

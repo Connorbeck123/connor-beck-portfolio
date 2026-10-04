@@ -105,7 +105,9 @@ export function Hero() {
         className="hero-video absolute inset-0 size-full object-cover"
       />
 
-      <h1 className="sr-only">{SITE.name}</h1>
+      <h1 className="sr-only">
+        {SITE.name} — Multidisciplinary Designer in London. Motion, brand identity, product and UI/UX design.
+      </h1>
 
       <div aria-hidden="true" className="relative z-10 w-full">
         <Image

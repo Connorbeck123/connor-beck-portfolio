@@ -7,7 +7,9 @@ import { getProjects } from "@/lib/projects";
 
 export const metadata = createPageMetadata({
   title: "Projects",
-  description: "Selected projects across motion, branding, product and UI/UX design.",
+  absoluteTitle: "Projects — Motion, Brand, Product & UI/UX Design | Connor Beck",
+  description:
+    "Selected design projects by Connor Beck, a London-based multidisciplinary designer: motion, brand identity, product and UI/UX work for the Premier League, Indeed and more.",
   path: "/work",
 });
 

@@ -8,7 +8,9 @@ import { createPageMetadata } from "@/lib/metadata";
 
 export const metadata = createPageMetadata({
   title: "Services",
-  description: "Motion design, brand design, product design and UI/UX design for freelance clients and teams.",
+  absoluteTitle: "Design Services — Motion, Brand Identity, Product & UI/UX | Connor Beck, London",
+  description:
+    "Motion design, brand and visual identity, product design and UI/UX design services from Connor Beck, a London-based multidisciplinary designer working with freelance clients and in-house teams.",
   path: "/services",
 });
 

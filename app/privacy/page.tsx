@@ -6,6 +6,7 @@ export const metadata = createPageMetadata({
   title: "Privacy",
   description: `How ${SITE.name} handles information sent through this website.`,
   path: "/privacy",
+  noIndex: true,
 });
 
 export default function PrivacyPage() {

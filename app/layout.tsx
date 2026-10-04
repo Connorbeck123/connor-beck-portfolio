@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import { SiteShell } from "@/components/layout/SiteShell";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { SITE } from "@/content/site";
+import { siteSchema } from "@/lib/schema";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -13,10 +15,13 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE.name} — ${SITE.role}`,
+    default: SITE.seo.title,
     template: `%s — ${SITE.name}`,
   },
-  description: SITE.description,
+  description: SITE.seo.description,
+  applicationName: SITE.name,
+  authors: [{ name: SITE.name, url: SITE.url }],
+  creator: SITE.name,
   openGraph: {
     siteName: SITE.name,
     locale: "en_GB",
@@ -48,6 +53,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <SiteShell>{children}</SiteShell>
+        <JsonLd data={siteSchema()} />
       </body>
     </html>
   );
