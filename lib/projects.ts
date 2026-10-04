@@ -38,6 +38,12 @@ export function isDiscipline(value: unknown): value is DisciplineSlug {
 
 const PROJECT_ONLY_LABELS: Partial<Record<DisciplineSlug, string>> = {
   "creative-direction": "Creative Direction",
+  "visual-development": "Visual Development",
+  "art-direction": "Art Direction",
+  "digital-design": "Digital Design",
+  "design-systems": "Design Systems",
+  "print-design": "Print Design",
+  "social-design": "Social Design",
 };
 
 export function disciplineLabel(slug: DisciplineSlug): string {

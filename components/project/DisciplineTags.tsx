@@ -17,7 +17,7 @@ export function DisciplineTags({ disciplines, concept, reveal, className }: Disc
       className={cn("flex flex-wrap gap-1.5", className)}
       aria-label="Disciplines"
     >
-      {disciplines.map((discipline) => (
+      {disciplines.slice(0, 2).map((discipline) => (
         <li key={discipline} className="rounded-full border border-line px-2.5 py-1 text-xs leading-none">
           {disciplineLabel(discipline)}
         </li>

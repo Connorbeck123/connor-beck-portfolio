@@ -1,5 +1,16 @@
 /** The first four are services; the rest are project-only tags with no service page. */
-export type DisciplineSlug = "motion" | "branding" | "product" | "ui-ux" | "creative-direction";
+export type DisciplineSlug =
+  | "motion"
+  | "branding"
+  | "product"
+  | "ui-ux"
+  | "creative-direction"
+  | "visual-development"
+  | "art-direction"
+  | "digital-design"
+  | "design-systems"
+  | "print-design"
+  | "social-design";
 
 export type MediaType = "image" | "video";
 
