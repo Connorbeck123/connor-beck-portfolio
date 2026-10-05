@@ -43,7 +43,7 @@ export default function HomePage() {
             <h2 id="about-heading" data-reveal className="type-meta text-ink-muted md:col-span-3">
               About
             </h2>
-            <p data-reveal className="type-lead max-w-3xl md:col-span-9">
+            <p data-reveal className="type-lead md:col-span-9">
               I’m a multidisciplinary designer specialising in motion, branding, product and UI/UX design, with
               experience across sports, entertainment, fintech and digital. I create clean, intuitive digital
               experiences that balance strong visuals with thoughtful, user-focused design.
