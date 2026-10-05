@@ -14,12 +14,14 @@ type MediaProps = {
   className?: string;
   /** Skip zoom/drift so the full export stays in frame. */
   locked?: boolean;
+  /** Set false when a parent handles the scroll reveal, e.g. clips that start off screen in a reel. */
+  reveal?: boolean;
 };
 
 const ratio = (value: AspectRatio) => value.replace("/", " / ");
 
 /** Real image or video when the asset has a src; a labelled placeholder until then. */
-export function Media({ media, aspect, mobileAspect, sizes = "(min-width: 1600px) 1520px, 100vw", priority, className, locked }: MediaProps) {
+export function Media({ media, aspect, mobileAspect, sizes = "(min-width: 1600px) 1520px, 100vw", priority, className, locked, reveal = true }: MediaProps) {
   const frame = aspect ?? media.aspect ?? "16/9";
 
   if (!media.src) {
@@ -48,7 +50,7 @@ export function Media({ media, aspect, mobileAspect, sizes = "(min-width: 1600px
 
   return (
     <div
-      data-reveal="media"
+      data-reveal={reveal ? "media" : undefined}
       className={cn(
         "relative w-full overflow-hidden rounded-media bg-placeholder aspect-[var(--ar-mobile)] md:aspect-[var(--ar)]",
         className,

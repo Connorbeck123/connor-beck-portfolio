@@ -9,17 +9,24 @@ type ChapterReelProps = {
   items: MediaAsset[];
 };
 
-/** Horizontal finger travel (px) before a swipe counts, so taps and vertical scrolls are ignored. */
+/** Finger travel (px) before a drag locks to an axis, and before a horizontal drag counts as a swipe. */
+const AXIS_LOCK = 8;
 const SWIPE_THRESHOLD = 40;
+/** How much a drag past the first or last clip moves the track, so the ends feel elastic. */
+const EDGE_RESISTANCE = 0.3;
 
 function visibleCountFor(width: number) {
   return width < 768 ? 2 : 4;
 }
 
-/** Four-up (two-up on small screens) reel. Arrows and touch swipes step one clip at a time. */
+/** Four-up (two-up on small screens) reel on a sliding track. Arrows step one clip; drags follow the finger. */
 export function ChapterReel({ items }: ChapterReelProps) {
   const [visibleCount, setVisibleCount] = useState(4);
   const [start, setStart] = useState(0);
+  const [drag, setDrag] = useState(0);
+  const [dragging, setDragging] = useState(false);
+  const trackRef = useRef<HTMLUListElement>(null);
+  const gesture = useRef<{ x: number; y: number; axis: "x" | "y" | null } | null>(null);
 
   useEffect(() => {
     const sync = () => {
@@ -34,44 +41,82 @@ export function ChapterReel({ items }: ChapterReelProps) {
 
   const maxStart = Math.max(0, items.length - visibleCount);
   const columns = maxStart === 0 ? Math.min(visibleCount, items.length) : visibleCount;
-  const visible = items.slice(start, start + visibleCount);
   const step = (delta: number) => setStart((current) => Math.min(maxStart, Math.max(0, current + delta)));
 
-  const touchStart = useRef<{ x: number; y: number } | null>(null);
-  const onTouchStart = (event: React.TouchEvent) => {
-    const touch = event.touches[0];
-    touchStart.current = { x: touch.clientX, y: touch.clientY };
-  };
-  const onTouchEnd = (event: React.TouchEvent) => {
-    const origin = touchStart.current;
-    touchStart.current = null;
-    if (!origin) return;
-    const touch = event.changedTouches[0];
-    const dx = touch.clientX - origin.x;
-    const dy = touch.clientY - origin.y;
-    if (Math.abs(dx) < SWIPE_THRESHOLD || Math.abs(dx) < Math.abs(dy)) return;
-    step(dx < 0 ? 1 : -1);
+  /** Distance between the left edges of neighbouring clips. */
+  const stepWidth = () => {
+    const track = trackRef.current;
+    if (!track) return 1;
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    return (track.clientWidth + gap) / columns;
   };
 
+  const onTouchStart = (event: React.TouchEvent) => {
+    const touch = event.touches[0];
+    gesture.current = { x: touch.clientX, y: touch.clientY, axis: null };
+  };
+
+  const onTouchMove = (event: React.TouchEvent) => {
+    const current = gesture.current;
+    if (!current) return;
+    const touch = event.touches[0];
+    const dx = touch.clientX - current.x;
+    const dy = touch.clientY - current.y;
+    if (!current.axis) {
+      if (Math.max(Math.abs(dx), Math.abs(dy)) < AXIS_LOCK) return;
+      current.axis = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+      if (current.axis === "x") setDragging(true);
+    }
+    if (current.axis !== "x") return;
+    const pastEdge = (start === 0 && dx > 0) || (start === maxStart && dx < 0);
+    setDrag(pastEdge ? dx * EDGE_RESISTANCE : dx);
+  };
+
+  const endGesture = (event: React.TouchEvent) => {
+    const current = gesture.current;
+    gesture.current = null;
+    if (current?.axis === "x") {
+      const dx = event.changedTouches[0].clientX - current.x;
+      if (Math.abs(dx) >= SWIPE_THRESHOLD) {
+        const clips = Math.max(1, Math.round(Math.abs(dx) / stepWidth()));
+        step(dx < 0 ? clips : -clips);
+      }
+    }
+    setDragging(false);
+    setDrag(0);
+  };
+
+  const touchHandlers =
+    maxStart > 0
+      ? { onTouchStart, onTouchMove, onTouchEnd: endGesture, onTouchCancel: endGesture }
+      : undefined;
+
   return (
-    <div className="mt-8">
-      <ul
-        onTouchStart={maxStart > 0 ? onTouchStart : undefined}
-        onTouchEnd={maxStart > 0 ? onTouchEnd : undefined}
-        className={cn(
-          "grid touch-pan-y gap-[var(--grid-gap)]",
-          columns === 1 && "grid-cols-1",
-          columns === 2 && "grid-cols-2",
-          columns === 3 && "grid-cols-3",
-          columns === 4 && "grid-cols-4",
-        )}
-      >
-        {visible.map((item) => (
-          <li key={item.src ?? item.label}>
-            <Media media={item} locked sizes={visibleCount === 2 ? "50vw" : "25vw"} />
-          </li>
-        ))}
-      </ul>
+    <div data-reveal className="mt-8">
+      <div className="overflow-hidden">
+        <ul
+          ref={trackRef}
+          {...touchHandlers}
+          className={cn(
+            "flex touch-pan-y gap-[var(--grid-gap)] will-change-transform",
+            !dragging && "transition-transform duration-500 ease-[var(--ease-premium)] motion-reduce:transition-none",
+          )}
+          style={{
+            transform: `translate3d(calc(${-start} * (100% + var(--grid-gap)) / ${columns} + ${drag}px), 0, 0)`,
+          }}
+        >
+          {items.map((item, index) => (
+            <li
+              key={item.src ?? item.label}
+              aria-hidden={index < start || index >= start + visibleCount || undefined}
+              className="shrink-0"
+              style={{ width: `calc((100% - ${columns - 1} * var(--grid-gap)) / ${columns})` }}
+            >
+              <Media media={item} locked reveal={false} sizes={visibleCount === 2 ? "50vw" : "25vw"} />
+            </li>
+          ))}
+        </ul>
+      </div>
 
       {maxStart > 0 ? (
         <div className="mt-6 flex items-center justify-center gap-4">
