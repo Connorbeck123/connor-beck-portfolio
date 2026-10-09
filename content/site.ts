@@ -42,10 +42,7 @@ export const SITE = {
     { href: "/contact", label: "Contact" },
   ],
   contact: { href: "/contact", label: "Get in touch" },
-  social: [
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/connorbeck96/" },
-    { label: "Pinterest", href: "#" },
-  ],
+  social: [{ label: "LinkedIn", href: "https://www.linkedin.com/in/connorbeck96/" }],
   clients: [
     { name: "Premier League", logo: "/clients/premier-league.png", width: 440, height: 186 },
     { name: "Indeed Flex", logo: "/clients/indeed-flex.png", width: 511, height: 94 },
