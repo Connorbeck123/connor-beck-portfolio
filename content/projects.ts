@@ -76,6 +76,11 @@ export const PROJECTS: Project[] = [
     ],
     outcome:
       "The final visual system brought the Bloom concept to life across the workshop environment, from large-format screens and physical installations to supporting event content. The combination of motion, colour and texture created a cohesive experience that connected the Premier League brand with its natural surroundings.",
+    credits: [
+      { role: "Head of Creative", name: "Ed Mallin" },
+      { role: "Design Director", name: "Dan Westwood" },
+      { role: "Production", name: "Alistair McGee" },
+    ],
   },
   {
     number: "02",
@@ -122,6 +127,10 @@ export const PROJECTS: Project[] = [
     ],
     outcome:
       "The visual system extended Alma beyond the product itself, creating a consistent presence throughout the event experience. Motion and branded content helped communicate the platform’s technology in a way that felt dynamic, approachable and connected to the wider FutureWorks environment.",
+    credits: [
+      { role: "Creative Marketing Manager", name: "Elliot Williams" },
+      { role: "Brand & Marketing Designer", name: "Alfred Mills" },
+    ],
   },
   {
     number: "03",
@@ -234,6 +243,12 @@ export const PROJECTS: Project[] = [
     ],
     outcome:
       "Fast-paced editing, motion and graphic design unite to create an energetic visual piece that builds momentum towards kick-off and the return of Premier League football.",
+    credits: [
+      { role: "Head of Creative", name: "Ed Mallin" },
+      { role: "Creative", name: "Glen West" },
+      { role: "Editor", name: "Simon Pearce" },
+      { role: "Production", name: "Alistair McGee" },
+    ],
   },
   {
     number: "06",

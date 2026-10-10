@@ -55,6 +55,8 @@ export type Project = {
   approach?: string;
   blocks: ContentBlock[];
   outcome?: string;
+  /** Collaborators listed under the outcome. */
+  credits?: { role: string; name: string }[];
   /** Search title and description. Not shown on the page. */
   seo: { title: string; description: string };
 };

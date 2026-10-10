@@ -13,6 +13,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { createPageMetadata } from "@/lib/metadata";
 import { getNextProject, getProjectBySlug, getProjects } from "@/lib/projects";
 import { projectSchema } from "@/lib/schema";
+import type { Project } from "@/types/project";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -37,7 +38,7 @@ export async function generateMetadata({ params }: ProjectPageProps) {
   });
 }
 
-function TextRow({ label, children }: { label: string; children: React.ReactNode }) {
+function TextRow({ label, children, credits }: { label: string; children: React.ReactNode; credits?: Project["credits"] }) {
   return (
     <div className="grid gap-4 border-t border-line pt-6 md:grid-cols-12 md:gap-[var(--grid-gap)]">
       <h2 data-reveal className="type-meta text-ink-muted md:col-span-4">
@@ -46,6 +47,16 @@ function TextRow({ label, children }: { label: string; children: React.ReactNode
       <p data-reveal className="type-lead max-w-3xl md:col-span-8 md:col-start-5">
         {children}
       </p>
+      {credits?.length ? (
+        <dl data-reveal className="mt-4 space-y-1 text-ink-muted md:col-span-8 md:col-start-5 md:mt-6">
+          {credits.map((credit) => (
+            <div key={`${credit.role}-${credit.name}`}>
+              <dt className="inline">{credit.role}: </dt>
+              <dd className="inline">{credit.name}</dd>
+            </div>
+          ))}
+        </dl>
+      ) : null}
     </div>
   );
 }
@@ -124,7 +135,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       {project.outcome ? (
         <Container as="section" aria-label="Outcome" className="mt-[var(--space-block)]">
-          <TextRow label="Outcome">{project.outcome}</TextRow>
+          <TextRow label="Outcome" credits={project.credits}>
+            {project.outcome}
+          </TextRow>
         </Container>
       ) : null}
 
