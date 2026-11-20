@@ -60,6 +60,6 @@ export const SITE = {
     { name: "Illustrator", use: "Brand Identity", icon: "/tools/illustrator.png" },
     { name: "InDesign", use: "Print Design", icon: "/tools/indesign.png" },
     { name: "Adobe Firefly", use: "AI Creation", icon: "/tools/firefly.png" },
-    { name: "Claude AI", use: "Ideation", icon: "/tools/claude.png" },
+    { name: "Claude", use: "Ideation / Code", icon: "/tools/claude.png" },
   ],
 } as const;
